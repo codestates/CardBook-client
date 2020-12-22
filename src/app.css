@@ -1,0 +1,13 @@
+.flex_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex_container_video {
+  width: 100px;
+  height: 200px;
+}
+.flex_container_image {
+  width: 100px;
+  height: 200px;
+}
