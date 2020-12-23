@@ -1,36 +1,35 @@
-import React from 'react'
-import Login from './Login'
-import Main from './Main'
-import SignUp from './SignUp'
-import Mypage from './Mypage'
-import Video from './basicObj/Mainloop.mp4'
-import Image from './basicObj/test.png'
-import './app.css'
+import React from "react";
+import Login from "./Login";
+import Main from "./Main";
+import SignUp from "./SignUp";
+import Mypage from "./Mypage";
+import Video from "./basicObj/Mainloop.mp4";
+import Image from "./basicObj/test.png";
+import "./App.css";
 
 class App extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       isLogin: true,
-    }
+    };
   }
 
   render() {
     return (
-      <div className="flex_container">
-        <div>
-          <video loop autoPlay muted>
+      <div className="container">
+        <div className="left">
+          <video className="videoTag" autoPlay loop muted>
             <source src={Video} type="video/mp4" />
-            Your browser does not support the video tag.
           </video>
         </div>
-
-        <div>
-          <img src={Image} />
+        <div className="right">
+          <h1>CardBook</h1>
+          <input type=""></input>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;
