@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import Video from 'basicObj/Mainloop.mp4'
 import Icon from 'basicObj/social_login.png'
 import { Link, withRouter } from 'react-router-dom'
-// import { authService, firebaseInstance } from 'myBase'
-// import axios from 'axios'
 import 'styles.css'
+import axios from 'axios'
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [newAccount, setNewAccount] = useState(true)
+  const [account, setAccount] = useState(false)
+
   const [error, setError] = useState('')
 
   const onChange = e => {
@@ -25,28 +25,38 @@ const Login = () => {
 
   const onSubmit = async e => {
     e.preventDefault()
-    try {
-      // let data
-      if (newAccount) {
-        // data = await authService.createUserWithEmailAndPassword(email, password)
-      } else {
-        // data = await authService.signInWithEmailAndPassword(email, password)
-      }
-      // console.log(data)
-    } catch (error) {
-      setError(error.message)
+  }
+
+  const handleSignup = e => {
+    if (!email || !password) {
+      e.preventDefault()
+      setError('모든 항목은 필수입니다.')
+    } else {
+      setError('')
+      setAccount(true)
     }
+    axios
+      .post('https://localhost:4000/users/login', {
+        email,
+        password,
+      })
+      .then(res => console.log('OK'))
+      .catch(err => console.log('ERROR'))
+  }
+
+  const handleGeust = () => {
+    setAccount(true)
   }
 
   return (
     <>
-      <div className="container">
-        <div className="container_left">
-          <video className="videoTag" autoPlay loop muted>
-            <source src={Video} type="video/mp4" />
-          </video>
-        </div>
-        <form onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
+        <div className="container">
+          <div className="container_left">
+            <video className="videoTag" autoPlay loop muted>
+              <source src={Video} type="video/mp4" />
+            </video>
+          </div>
           <div className="container_right">
             <h1 className="main_title">CardBook</h1>
             <input
@@ -63,17 +73,27 @@ const Login = () => {
               placeholder="Password"
               onChange={onChange}
             ></input>
-            <button className="main_loginbtn">Login</button>
+            <Link to="/home">
+              <button className="main_loginbtn" onClick={handleSignup}>
+                Login
+              </button>
+            </Link>
+            <Link to="/home">
+              <button className="main_Gestloginbtn" onClick={handleGeust}>
+                Guest Login
+              </button>
+            </Link>
+            <div className="login_error_massage">{error}</div>
             <span className="find-ID-find-PW">find Email / find Passward</span>
 
             <Link to="/signup">
               <button className="main_signUpbtn">Sign Up</button>
             </Link>
 
-            <img className="main_icon" src={Icon} />
+            <img className="main_icon" src={Icon} alt="base" />
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </>
   )
 }
