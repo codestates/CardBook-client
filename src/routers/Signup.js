@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, useHistory } from 'react-router-dom'
 import BaseImage from 'basicObj/basic_profile_image.png'
 import axios from 'axios'
 import 'styles.css'
@@ -11,6 +11,7 @@ const Signup = () => {
   const [password, setPassword] = useState('')
   const [phone, setPhone] = useState('')
   const [username, setUsername] = useState('')
+  const [error, setError] = useState('')
 
   const onChange = e => {
     const {
@@ -25,25 +26,46 @@ const Signup = () => {
     } else if (name === 'username') {
       setUsername(value)
     }
-
     // console.log(e.target.value)
   }
   const handleSignup = e => {
     e.preventDefault()
-    axios.post('https://localhost:4000/users/signup', {
-      email,
-      password,
-      phone,
-      username,
-    })
+    if (!email || !password || !phone || !username) {
+      setError('모든 항목은 필수입니다.')
+    } else {
+      setError('')
+    }
+    axios
+      .post('https://localhost:4000/users/signup', {
+        email,
+        password,
+        phone,
+        username,
+      })
+      .then(res => console.log('OK'))
+      .catch(err => {
+        if (err.response.status === 422) {
+          setError(err.response.data)
+        } else if (err.response.status === 409) {
+          setError(err.response.data)
+        }
+      })
   }
+
+  const onSubmit = e => {
+    e.preventDefault()
+  }
+
+  const history = useHistory()
 
   return (
     <>
-      <form onSubmit={e => e.preventDefault()}>
+      <form onSubmit={onSubmit}>
         <div className="container_center">
-          <h1 className="main_title">CardBook</h1>
-          <img src={BaseImage} style={{ height: '150px' }} />
+          <h1 className="signup_Logo" onClick={() => history.push('/')}>
+            CardBook
+          </h1>
+          <img src={BaseImage} alt="base" style={{ height: '150px' }} />
           <input
             className="text_Box"
             name="email"
@@ -72,7 +94,7 @@ const Signup = () => {
             placeholder="Phone"
             onChange={onChange}
           ></input>
-
+          <div className="login_error_massage">{error}</div>
           <Link to="/">
             <button
               className="main_signUpbtn"
