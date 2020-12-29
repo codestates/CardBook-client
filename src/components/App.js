@@ -1,14 +1,15 @@
 import React from 'react'
-import Auth from 'routers/Auth'
+import { withRouter } from 'react-router-dom'
+import AppRouter from 'components/Router_HG'
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <Auth />
+        <AppRouter />
       </div>
     )
   }
 }
 
-export default App
+export default withRouter(App)
