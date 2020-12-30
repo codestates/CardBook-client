@@ -4,7 +4,6 @@ import Navigation from "components/Navigation";
 import Public from "routers/Public";
 import My from "routers/My";
 import Profile from "routers/Profile";
-import Auth from "routers/Auth";
 import CardDetail from "components/CardDetail";
 import Modal from "components/Modal";
 import Footer from "./Footer";
