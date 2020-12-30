@@ -43,13 +43,7 @@ const Signup = () => {
         username,
       })
       .then(res => console.log('OK'))
-      .catch(err => {
-        if (err.response.status === 422) {
-          setError(err.response.data)
-        } else if (err.response.status === 409) {
-          setError(err.response.data)
-        }
-      })
+      .catch(err => console.log('ERR'))
   }
 
   const onSubmit = e => {
