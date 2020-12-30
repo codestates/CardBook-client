@@ -1,0 +1,40 @@
+.cardDetail {
+  /* border: 1px solid red; */
+  padding-left: 120px;
+  padding-right: 120px;
+  /* height: 100vh; */
+  flex-direction: row;
+  margin-top: 46px;
+}
+
+.contentBox {
+  display: flex;
+}
+
+.contentBox p {
+  margin-left: 42px;
+  color: #767676;
+}
+
+.subTitle {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+.detailImg {
+  margin-top: 16px;
+  width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.2);
+}
+
+#img {
+  margin-top: 22px;
+  width: 100%;
+  height: 265px;
+  background: #ebebeb;
+}
+
+p {
+  line-height: 180%;
+}

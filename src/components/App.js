@@ -1,14 +1,19 @@
-import React from 'react'
-import Auth from 'routers/Auth'
+import React, { useState } from "react";
+import AppRouter from "components/Router";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Auth />
-      </div>
-    )
-  }
-}
+const App = () => {
+  const [init, setInit] = useState(true);
+  const [userObj, setUserObj] = useState(true);
 
-export default App
+  return (
+    <>
+      {init ? (
+        <AppRouter isLoggedIn={userObj} />
+      ) : (
+        "Downloading User Information..."
+      )}
+    </>
+  );
+};
+
+export default App;

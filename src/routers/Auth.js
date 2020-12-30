@@ -1,11 +1,10 @@
-import React from 'react'
-import Video from 'basicObj/Mainloop.mp4'
-import Icon from 'basicObj/social_login.png'
-import axios from 'axios'
-import 'styles.css'
+import React from "react";
+import "styles.css";
 
-class Auth extends React.Component {
-  constructor(props) {
+const Auth = () => {
+  return <div>Auth Pages</div>;
+
+  /* constructor(props) {
     super(props)
     this.state = {
       email: '',
@@ -17,7 +16,6 @@ class Auth extends React.Component {
     this.setState({ [key]: e.target.value })
     console.log(e.target.value)
   }
-
   handleLogin = () => {
     if (this.state.email === '' || this.state.password === '') {
       this.setState({ errorMessage: '이메일과 비밀번호를 입력하세요' })
@@ -27,13 +25,11 @@ class Auth extends React.Component {
           email: this.state.email,
           password: this.state.password,
         })
-
         .then(res => {
           this.props.handleResponseSuccess()
         })
     }
   }
-
   render() {
     return (
       <div className="container">
@@ -65,7 +61,7 @@ class Auth extends React.Component {
         </div>
       </div>
     )
-  }
-}
+  } */
+};
 
-export default Auth
+export default Auth;
