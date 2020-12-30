@@ -28,7 +28,7 @@
     ],
     "rules": {
       "no-unused-vars": "off"
-  }
+    }
   },
   "browserslist": {
     "production": [

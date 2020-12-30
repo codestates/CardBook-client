@@ -1,7 +1,9 @@
 import React, { useState, useRef } from "react";
 import "components/Modal.css";
+import axios from "axios";
 
 const Modal = ({ onModalOpen }) => {
+  axios.get("http://localhost:4000");
   const titleRef = useRef();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

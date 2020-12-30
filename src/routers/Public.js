@@ -14,19 +14,24 @@ const Public = () => {
 
   useEffect(() => {
     const getData = async () => {
-      await axios
-        .get(
-          "https://yts.mx/api/v2/list_movies.json",
-          {
-            headers: { "Access-Control-Allow-Origin": "*" },
-          },
-          { withCredentials: true }
-        )
-        .then((movies) => setMovies(movies.data.data.movies))
-        .catch((err) => console.log(err + " Fuck error"));
+      let movies = await axios.get(
+        "https://yts.mx/api/v2/list_movies.json" /* , {
+        method: "GET",
+        mode: "no-cors",
+        headers: {
+          "Access-Control-Allow-Origin": "http://localhost:3000/",
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+        credentials: "same-origin",
+      } */
+      );
+      setMovies(movies.data.data.movies);
     };
     getData();
   }, []);
+  console.log(movies);
+
   return (
     <>
       <div className="cardContainor">
