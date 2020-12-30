@@ -1,15 +1,24 @@
-import React from 'react'
-import { withRouter } from 'react-router-dom'
-import AppRouter from 'components/Router_HG'
+import React, { useState } from "react";
+import AppRouter from "components/Router";
+import AppRouter2 from "components/Router_HG";
 
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <AppRouter />
-      </div>
-    )
-  }
-}
+const App = () => {
+  const [init, setInit] = useState(false);
+  const [userObj, setUserObj] = useState(true);
 
-export default withRouter(App)
+  const onLoggedIn = () => {
+    setInit((prev) => !prev);
+  };
+
+  return (
+    <>
+      {init ? (
+        <AppRouter isLoggedIn={userObj} />
+      ) : (
+        <AppRouter2 onLoggedIn={onLoggedIn} />
+      )}
+    </>
+  );
+};
+
+export default App;

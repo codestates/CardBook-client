@@ -1,52 +1,52 @@
-import React, { useState } from 'react'
-import Video from 'basicObj/Mainloop.mp4'
-import Icon from 'basicObj/social_login.png'
-import { Link, withRouter } from 'react-router-dom'
-import 'styles.css'
-import axios from 'axios'
+import React, { useState } from "react";
+import Video from "basicObj/Mainloop.mp4";
+import Icon from "basicObj/social_login.png";
+import { Link, withRouter } from "react-router-dom";
+import "styles.css";
+import axios from "axios";
 
-const Login = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [account, setAccount] = useState(false)
+const Login = ({ onLoggedIn }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [account, setAccount] = useState(false);
 
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
 
-  const onChange = e => {
+  const onChange = (e) => {
     const {
       target: { name, value },
-    } = e
-    if (name === 'email') {
-      setEmail(value)
-    } else if (name === 'password') {
-      setPassword(value)
+    } = e;
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
     }
-  }
+  };
 
-  const onSubmit = async e => {
-    e.preventDefault()
-  }
+  const onSubmit = async (e) => {
+    e.preventDefault();
+  };
 
-  const handleSignup = e => {
+  const handleSignup = (e) => {
     if (!email || !password) {
-      e.preventDefault()
-      setError('모든 항목은 필수입니다.')
+      e.preventDefault();
+      setError("모든 항목은 필수입니다.");
     } else {
-      setError('')
-      setAccount(true)
+      setError("");
+      setAccount(true);
     }
     axios
-      .post('https://localhost:4000/users/login', {
+      .post("https://localhost:4000/users/login", {
         email,
         password,
       })
-      .then(res => console.log('OK'))
-      .catch(err => console.log('ERROR'))
-  }
+      .then((res) => console.log("OK"))
+      .catch((err) => console.log("ERROR"));
+  };
 
   const handleGeust = () => {
-    setAccount(true)
-  }
+    onLoggedIn();
+  };
 
   return (
     <>
@@ -73,12 +73,12 @@ const Login = () => {
               placeholder="Password"
               onChange={onChange}
             ></input>
-            <Link to="/home">
+            <Link to="/public">
               <button className="main_loginbtn" onClick={handleSignup}>
                 Login
               </button>
             </Link>
-            <Link to="/home">
+            <Link to="/public">
               <button className="main_Gestloginbtn" onClick={handleGeust}>
                 Guest Login
               </button>
@@ -95,7 +95,7 @@ const Login = () => {
         </div>
       </form>
     </>
-  )
-}
+  );
+};
 
-export default withRouter(Login)
+export default withRouter(Login);
