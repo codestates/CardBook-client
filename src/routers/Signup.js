@@ -95,7 +95,7 @@ const Signup = () => {
               type="submit"
               onClick={handleSignup}
             >
-              Sign Up
+              Sign Upnow
             </button>
           </Link>
         </div>
