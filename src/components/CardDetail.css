@@ -5,6 +5,7 @@
   /* height: 100vh; */
   flex-direction: row;
   margin-top: 46px;
+  padding-bottom: 46px;
 }
 
 .contentBox {

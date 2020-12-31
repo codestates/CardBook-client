@@ -2,10 +2,12 @@
   /* border: 1px solid red; */
   padding-left: 120px;
   padding-right: 120px;
-  margin-top: 46px;
+  margin-top: 30px;
+  padding-bottom: 46px;
   /* height: 75%; */
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -22,6 +24,7 @@
 }
 .card div {
   color: white;
+  text-align: center;
   text-shadow: 1px 1px 2.5px #000000;
 }
 
