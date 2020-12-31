@@ -5,6 +5,9 @@ const MyCard = ({ content }) => {
   return (
     <Link
       className="card"
+      style={{
+        backgroundImage: `url(${content.background_image_original})`,
+      }}
       to={{
         pathname: `/my/${content.id}`,
         state: {

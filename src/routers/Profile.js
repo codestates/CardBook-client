@@ -1,10 +1,11 @@
 import React from "react";
+import "routers/Profile.css";
 
 const Profile = () => {
   return (
-    <>
-      <div>Profile Pages</div>
-    </>
+    <div className="profileContainer">
+      <button>Logout</button>
+    </div>
   );
 };
 

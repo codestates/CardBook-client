@@ -4,53 +4,30 @@ import PublicCard from "components/PublicCard";
 import axios from "axios";
 
 const Public = () => {
-  /* axios
-    .post("http://localhost:4000", {
-      value: "alsdkfjlaskdjf",
-    })
-    .then((value) => console.log(value.data)); */
   const [movies, setMovies] = useState([]);
-  const [contents, setContents] = useState([
-    { title: "Public Card", id: 0 },
-    { title: "Public Card", id: 1 },
-    { title: "Public Card", id: 2 },
-    { title: "Public Card", id: 3 },
-  ]);
+  const [contents, setContents] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      let movies = await axios.get(
-        "https://yts.mx/api/v2/list_movies.json" /* , {
-        method: "GET",
-        mode: "no-cors",
-        headers: {
-          "Access-Control-Allow-Origin": "http://localhost:3000/",
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-        credentials: "same-origin",
-      } */
+    const getContentsData = async () => {
+      let data = await axios.get(
+        "https://www.cardbookserver.tk:4000/contents/viewpubliclists"
       );
-      setMovies(movies.data.data.movies);
+      setContents(data.data);
     };
-    getData();
+    getContentsData();
   }, []);
-  console.log(movies);
 
   return (
     <>
       <div className="cardContainor">
-        {movies.map((content, index) => {
-          if (index < 15) {
+        {contents.map((content, index) => {
+          if (index < 200) {
             return <PublicCard key={content.id} content={content} />;
           } else {
-            return console.log(index);
+            return;
           }
         })}
       </div>
-      {/* <div id="ani">
-        <div id="animate">animate</div>
-      </div> */}
     </>
   );
 };

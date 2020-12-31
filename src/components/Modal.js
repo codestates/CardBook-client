@@ -19,8 +19,18 @@ const Modal = ({ onModalOpen }) => {
   };
 
   const onPostCard = () => {
-    console.log(title, content);
+    axios
+      .post("https://www.cardbookserver.tk:4000/contents/write", {
+        subclassId: 1,
+        content: content,
+        title: title,
+        userId: 1,
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    onModalOpen();
   };
+
   return (
     <div>
       <div id="writeBg">
