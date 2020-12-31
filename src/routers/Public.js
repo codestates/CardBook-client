@@ -4,6 +4,11 @@ import PublicCard from "components/PublicCard";
 import axios from "axios";
 
 const Public = () => {
+  /* axios
+    .post("http://localhost:4000", {
+      value: "alsdkfjlaskdjf",
+    })
+    .then((value) => console.log(value.data)); */
   const [movies, setMovies] = useState([]);
   const [contents, setContents] = useState([
     { title: "Public Card", id: 0 },
@@ -36,7 +41,7 @@ const Public = () => {
     <>
       <div className="cardContainor">
         {movies.map((content, index) => {
-          if (index < 4) {
+          if (index < 15) {
             return <PublicCard key={content.id} content={content} />;
           } else {
             return console.log(index);

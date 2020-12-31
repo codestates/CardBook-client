@@ -2,10 +2,15 @@ footer {
   width: 100vw;
   height: 80px;
   background-color: black;
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+footer div {
+  padding-left: 12px;
+  cursor: pointer;
 }
