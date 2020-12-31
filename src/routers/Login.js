@@ -1,52 +1,51 @@
-import React, { useState } from "react";
-import Video from "basicObj/Mainloop.mp4";
-import Icon from "basicObj/social_login.png";
-import { Link, withRouter } from "react-router-dom";
-import "styles.css";
-import axios from "axios";
+import React, { useState } from 'react'
+import Video from 'basicObj/Mainloop.mp4'
+import Icon from 'basicObj/social_login.png'
+import { Link, withRouter, useHistory } from 'react-router-dom'
+import 'styles.css'
+import axios from 'axios'
 
 const Login = ({ onLoggedIn }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [account, setAccount] = useState(false);
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const history = useHistory()
 
-  const [error, setError] = useState("");
-
-  const onChange = (e) => {
+  const onChange = e => {
     const {
       target: { name, value },
-    } = e;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
+    } = e
+    if (name === 'email') {
+      setEmail(value)
+    } else if (name === 'password') {
+      setPassword(value)
     }
-  };
+  }
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-  };
+  const onSubmit = async e => {
+    e.preventDefault()
+  }
 
-  const handleSignup = (e) => {
-    if (!email || !password) {
-      e.preventDefault();
-      setError("모든 항목은 필수입니다.");
-    } else {
-      setError("");
-      setAccount(true);
-    }
+  const handleSignup = e => {
     axios
-      .post("https://localhost:4000/users/login", {
+      .post('https://www.cardbookserver.tk:4000/users/login', {
         email,
         password,
       })
-      .then((res) => console.log("OK"))
-      .catch((err) => console.log("ERROR"));
-  };
+      .then(res => onLoggedIn())
+      .catch(err => {
+        console.log(err.response)
+        if (err.response.status === 400) {
+          setError('이메일과 비밀번호 모두 입력하세요.')
+        } else if (err.response.status === 404) {
+          setError('이메일 또는 비밀번호가 일치하지 않습니다.')
+        }
+      }, e.preventDefault())
+  }
 
   const handleGeust = () => {
-    onLoggedIn();
-  };
+    onLoggedIn()
+  }
 
   return (
     <>
@@ -95,7 +94,7 @@ const Login = ({ onLoggedIn }) => {
         </div>
       </form>
     </>
-  );
-};
+  )
+}
 
-export default withRouter(Login);
+export default withRouter(Login)
