@@ -26,13 +26,16 @@ const Login = ({ onLoggedIn }) => {
     e.preventDefault()
   }
 
-  const handleSignup = e => {
-    axios
+  const handleSignup = async e => {
+    await axios
       .post('https://www.cardbookserver.tk:4000/users/login', {
         email,
         password,
       })
-      .then(res => onLoggedIn())
+      .then(res => {
+        history.push('/public')
+        onLoggedIn()
+      })
       .catch(err => {
         console.log(err.response)
         if (err.response.status === 400) {
