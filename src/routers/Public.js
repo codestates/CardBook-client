@@ -20,11 +20,11 @@ const Public = () => {
   return (
     <>
       <div className="cardContainor">
-        {contents.map((content, index) => {
+        {contents.reverse().map((content, index) => {
           if (index < 200) {
             return <PublicCard key={content.id} content={content} />
           } else {
-            return console.log(index)
+            return console.log(index);
           }
         })}
       </div>

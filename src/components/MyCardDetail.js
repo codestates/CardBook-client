@@ -1,6 +1,5 @@
 import React from "react";
 import "components/CardDetail.css";
-import axios from "axios";
 
 const CardDetail = ({ location }) => {
   console.log(location.state.content);
@@ -13,7 +12,7 @@ const CardDetail = ({ location }) => {
           src={location.state.content.large_cover_image}
           alt={location.state.content.title}
         />
-        <p>contents: {location.state.content.description_full}</p>
+        <p>contents: {location.state.content.title}</p>
       </div>
     </div>
   );
