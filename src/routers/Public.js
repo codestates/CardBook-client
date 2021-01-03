@@ -15,7 +15,7 @@ const Public = () => {
       )
       let movies = await axios.get("https://yts.mx/api/v2/list_movies.json")
       let datas = [...movies.data.data.movies, ...data.data];
-      setContents(datas);      
+      setContents(datas);
     }
     getContentsData()
   }, [])

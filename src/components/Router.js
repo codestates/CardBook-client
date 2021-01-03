@@ -3,35 +3,26 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from "components/Navigation";
 import Modal from "components/Modal";
 import Public from "routers/Public";
-import SearchPublicContents from "routers/SearchPublicContents";
 import My from "routers/My";
 import Profile from "routers/Profile";
 import CardDetail from "components/CardDetail";
 import MyCardDetail from "components/MyCardDetail";
 import Footer from "./Footer";
 
-const AppRouter = ({ isLoggedIn,onLoggedIn }) => {
+const AppRouter = ({ isLoggedIn }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [keyword,setKeyword]=useState('');
   const onModalOpen = () => {
     setIsModalOpen((prev) => !prev);
-  };
-  const handleKeyword = (e)=>{
-    setKeyword(e)    
-  }
+  };  
   return (
     <Router>
       <Switch>
         {isLoggedIn ? (
           <>
             {isModalOpen ? <Modal onModalOpen={onModalOpen} /> : null}
-            <Navigation onModalOpen={onModalOpen} handleKeyword={handleKeyword} onLoggedIn={onLoggedIn}/>
-            {console.log(keyword)}
-            {
-              (keyword==='')?
-              <Route exact path="/public" component={Public} />:
-              <Route exact path="/public" component={SearchPublicContents} />
-            }
+            <Navigation onModalOpen={onModalOpen} />   
+            <Route exact path="/public" component={Public} />            
             <Route path="/public/:id" component={CardDetail} />
             <Route exact path="/my" component={My} />
             <Route exact path="/my/:id" component={MyCardDetail} />
