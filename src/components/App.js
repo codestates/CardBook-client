@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       {init ? (
-        <AppRouter isLoggedIn={userObj} onLoggedIn={onLoggedIn}/>
+        <AppRouter isLoggedIn={userObj}/>
       ) : (
         <AppRouter2 onLoggedIn={onLoggedIn} />
       )}

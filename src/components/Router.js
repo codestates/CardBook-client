@@ -10,8 +10,7 @@ import MyCardDetail from "components/MyCardDetail";
 import Footer from "./Footer";
 
 const AppRouter = ({ isLoggedIn }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [keyword,setKeyword]=useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);  
   const onModalOpen = () => {
     setIsModalOpen((prev) => !prev);
   };  
