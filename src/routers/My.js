@@ -8,7 +8,7 @@ const My = () => {
 
   useEffect(() => {
     const getData = async () => {
-      let movies = await axios.get("https://yts.mx/api/v2/list_movies.json");
+      let movies = await axios.get("https://yts.mx/api/v2/list_movies.json")
       setContents(movies.data.data.movies);
     };
     getData();

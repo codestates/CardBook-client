@@ -5,15 +5,14 @@ import AppRouter2 from "components/Router_HG";
 const App = () => {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(true);
-
+  
   const onLoggedIn = () => {
     setInit((prev) => !prev);
-  };
-
+  };  
   return (
     <>
       {init ? (
-        <AppRouter isLoggedIn={userObj} />
+        <AppRouter isLoggedIn={userObj} onLoggedIn={onLoggedIn}/>
       ) : (
         <AppRouter2 onLoggedIn={onLoggedIn} />
       )}

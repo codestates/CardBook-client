@@ -3,11 +3,11 @@ import 'routers/Public.css'
 import PublicCard from 'components/PublicCard'
 import axios from 'axios'
 
-const Public = () => {  
+const Public = ({location}) => {  
   const [contents, setContents] = useState([])  
   
-  useEffect(() => {
-    const getContentsData = async () => {      
+  useEffect(() => {    
+    const getContentsData = async () => {   
       let data=[];
       
       data = await axios.get(
