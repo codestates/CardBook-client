@@ -26,11 +26,13 @@ const Navigation = ({ onModalOpen, handleKeyword}) => {
   }; */
   return (
     <nav className="nav">
-      <h1 onClick={() => history.push("/public")}>CardBook</h1>
+      <h1 id="navTitle" onClick={() => history.push("/public")}>
+        CardBook
+      </h1>
       <Link id="public" to="/public">
         public
       </Link>
-      <span>|</span>
+      <span id="navDivider">|</span>
       <Link id="my" to="/my">
         my
       </Link>
@@ -44,7 +46,9 @@ const Navigation = ({ onModalOpen, handleKeyword}) => {
       <Link id="profile" to="/profile">
         profile
       </Link>
-      <button onClick={onModalOpen}>Write Card</button>
+      <button id="writeBtn" onClick={onModalOpen}>
+        Write Card
+      </button>
     </nav>
   );
 };
