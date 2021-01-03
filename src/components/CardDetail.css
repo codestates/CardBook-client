@@ -13,8 +13,11 @@
 }
 
 .contentBox p {
-  margin-left: 42px;
   color: #767676;
+  margin-right: 42px;
+  word-break: break-all;
+  overflow: hidden;
+  /* overflow-wrap: normal; */
 }
 
 .subTitle {
@@ -24,6 +27,7 @@
 
 .detailImg {
   margin-top: 16px;
+  margin-right: 42px;
   width: 320px;
   border-radius: 16px;
   box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.2);
@@ -36,6 +40,6 @@
   background: #ebebeb;
 }
 
-p {
+.detailImg p {
   line-height: 180%;
 }

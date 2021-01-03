@@ -1,20 +1,20 @@
 import React, { useState, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import "components/Modal.css";
 import axios from "axios";
 
 const Modal = ({ onModalOpen }) => {
-  axios.get("http://localhost:4000");
   const titleRef = useRef();
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  let history = useHistory();
+
   const onTitleChange = (event) => {
-    console.log(event.target.value);
     setTitle(event.target.value);
   };
 
   const onContentChange = (event) => {
-    console.log(event.target.value);
     setContent(event.target.value);
   };
 
@@ -29,6 +29,8 @@ const Modal = ({ onModalOpen }) => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     onModalOpen();
+    // history.push("/my");
+    history.push("/public");
   };
 
   return (
