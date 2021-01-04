@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navigation from 'components/Navigation'
@@ -19,21 +20,24 @@ const AppRouter = ({ isLoggedIn }) => {
     setIsProfile(prev => !prev)
   }
 
+
   return (
     <Router>
       <Switch>
         {isLoggedIn ? (
           <>
             {isModalOpen ? <Modal onModalOpen={onModalOpen} /> : null}
+
             {isProfile ? null : (
               <Navigation onModalOpen={onModalOpen} onProfile={onProfile} />
             )}
 
             <Route exact path="/public" component={Public} />
+
             <Route path="/public/:id" component={CardDetail} />
             <Route exact path="/my" component={My} />
             <Route exact path="/my/:id" component={MyCardDetail} />
-            <Route exact path="/profile" component={Profile} />
+            <Route path="/profile" component={Profile} />
             {/* <Footer /> */}
           </>
         ) : (

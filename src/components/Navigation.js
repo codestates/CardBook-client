@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import 'components/Navigation.css'
 
+
 const Navigation = ({ onModalOpen, isLoggedIn, onProfile }) => {
   const [search, setSearch] = useState('')
   const history = useHistory()
@@ -9,6 +10,7 @@ const Navigation = ({ onModalOpen, isLoggedIn, onProfile }) => {
   const onChange = event => {
     setSearch(event.target.value)
   }
+
   /* const onChangeTextColor = (event) => {
     let publicEl = document.querySelector("#public");
     let myEl = document.querySelector("#my");
@@ -35,6 +37,7 @@ const Navigation = ({ onModalOpen, isLoggedIn, onProfile }) => {
         type="text"
         onChange={onChange}
       />
+
       <input id="searchSubmit" type="submit" value="search" />
       <Link
         id="profile"
@@ -42,6 +45,7 @@ const Navigation = ({ onModalOpen, isLoggedIn, onProfile }) => {
         onClick={onProfile}
         onProfile={onProfile}
       >
+
         profile
       </Link>
       <button id="writeBtn" onClick={onModalOpen}>
