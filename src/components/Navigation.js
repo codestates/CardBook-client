@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import "components/Navigation.css";
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import 'components/Navigation.css'
 
-const Navigation = ({ onModalOpen }) => {
-  const [search, setSearch] = useState("");
-  const history = useHistory();
 
-  const onChange = (event) => {
-    setSearch(event.target.value);
-  };
+const Navigation = ({ onModalOpen, isLoggedIn, onProfile }) => {
+  const [search, setSearch] = useState('')
+  const history = useHistory()
+
+  const onChange = event => {
+    setSearch(event.target.value)
+  }
+
   /* const onChangeTextColor = (event) => {
     let publicEl = document.querySelector("#public");
     let myEl = document.querySelector("#my");
@@ -19,11 +21,13 @@ const Navigation = ({ onModalOpen }) => {
   }; */
   return (
     <nav className="nav">
-      <h1 onClick={() => history.push("/public")}>CardBook</h1>
+      <h1 id="navTitle" onClick={() => history.push('/public')}>
+        CardBook
+      </h1>
       <Link id="public" to="/public">
         public
       </Link>
-      <span>|</span>
+      <span id="navDivider">|</span>
       <Link id="my" to="/my">
         my
       </Link>
@@ -33,13 +37,22 @@ const Navigation = ({ onModalOpen }) => {
         type="text"
         onChange={onChange}
       />
+
       <input id="searchSubmit" type="submit" value="search" />
-      <Link id="profile" to="/profile">
+      <Link
+        id="profile"
+        to="/profile"
+        onClick={onProfile}
+        onProfile={onProfile}
+      >
+
         profile
       </Link>
-      <button onClick={onModalOpen}>Write Card</button>
+      <button id="writeBtn" onClick={onModalOpen}>
+        Write Card
+      </button>
     </nav>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

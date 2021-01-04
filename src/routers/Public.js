@@ -3,16 +3,19 @@ import 'routers/Public.css'
 import PublicCard from 'components/PublicCard'
 import axios from 'axios'
 
-const Public = () => {
-  const [movies, setMovies] = useState([])
-  const [contents, setContents] = useState([])
-
+const Public = () => {  
+  const [contents, setContents] = useState([])  
+  
   useEffect(() => {
-    const getContentsData = async () => {
-      let data = await axios.get(
-        'https://www.cardbookserver.tk:4000/contents/viewpubliclists'
+    const getContentsData = async () => {      
+      let data=[];
+      
+      data = await axios.get(
+        'https://api.cardbook.tk:4000/contents/viewpubliclists'
       )
-      setContents(data.data)
+      let movies = await axios.get("https://yts.mx/api/v2/list_movies.json")
+      let datas = [...movies.data.data.movies, ...data.data];
+      setContents(datas);
     }
     getContentsData()
   }, [])
@@ -20,11 +23,11 @@ const Public = () => {
   return (
     <>
       <div className="cardContainor">
-        {contents.map((content, index) => {
+        {contents.reverse().map((content, index) => {
           if (index < 200) {
             return <PublicCard key={content.id} content={content} />
           } else {
-            return console.log(index)
+            return console.log(index);
           }
         })}
       </div>

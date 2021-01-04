@@ -43,14 +43,6 @@
   /* transform: rotate(45deg); */
   animation: deg 3s infinite;
 }
-@keyframes deg {
-  50% {
-    transform: rotate(45deg);
-  }
-}
-#animate:hover {
-  background-color: blue;
-}
 
 @media (max-width: 768px) {
   .cardContainor {

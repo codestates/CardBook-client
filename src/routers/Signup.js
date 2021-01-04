@@ -58,7 +58,7 @@ const Signup = () => {
 
   const handleSignup = e => {
     axios
-      .post('/users/signup', {
+      .post('https://api.cardbook.tk:4000/users/signup', {
         email,
         password,
         phone,
@@ -78,7 +78,7 @@ const Signup = () => {
       })
   }
 
-  // https://www.cardbookserver.tk:4000/users/signup
+  // https://api.cardbook.tk:4000/users/signup
   // https://localhost:4000/users/signup
 
   const onChangePasswordCheck = (e) => {

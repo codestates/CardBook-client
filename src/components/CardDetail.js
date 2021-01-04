@@ -4,25 +4,29 @@ import axios from "axios";
 
 const CardDetail = ({ location }) => {
   const onDeleteCard = async () => {
-    await axios
-      .post("https://www.cardbookserver.tk:4000/contents/delete", {
+    try {
+      await axios.post("https://api.cardbook.tk:4000/contents/delete", {
         id: location.state.content.id,
-      })
-      .then((res) => console.log("ok"))
-      .catch((err) => console.log("no"));
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    window.history.back();
   };
 
   return (
     <div className="cardDetail">
       <div className="subTitle">{location.state.content.title}</div>
       <div className="contentBox">
-        <img
-          className="detailImg"
-          src={location.state.content.images}
-          alt={location.state.content.title}
-        />
-        <p>contents: {location.state.content.content}</p>
-        <p>contentsId:{location.state.content.id}</p>
+        {location.state.content.images && (
+          <img
+            className="detailImg"
+            src={location.state.content.images}
+            alt={location.state.content.title}
+          />
+        )}
+
+        <p>{location.state.content.content}</p>
       </div>
       <button onClick={onDeleteCard}>Delete</button>
     </div>
