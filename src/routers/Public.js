@@ -11,7 +11,7 @@ const Public = () => {
       let data=[];
       
       data = await axios.get(
-        'https://www.cardbookserver.tk:4000/contents/viewpubliclists'
+        'https://api.cardbook.tk:4000/contents/viewpubliclists'
       )
       let movies = await axios.get("https://yts.mx/api/v2/list_movies.json")
       let datas = [...movies.data.data.movies, ...data.data];

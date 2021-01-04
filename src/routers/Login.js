@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import Video from 'basicObj/Mainloop.mp4'
 import Icon from 'basicObj/social_login.png'
-import { Link, withRouter, useHistory } from 'react-router-dom'
+import { Link, withRouter, useHistory, Switch } from 'react-router-dom'
+import EmailModal from '../components/FindEmailModal'
+import PasswordModal from '../components/FindPasswordModal'
 import 'styles.css'
 import axios from 'axios'
 
 const Login = ({ onLoggedIn }) => {
+  const [emailModalIsOpen, setEmailModal] = useState(false);
+  const [passwordModalIsOpen, setPasswordModal]  = useState(false)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -21,14 +25,19 @@ const Login = ({ onLoggedIn }) => {
       setPassword(value)
     }
   }
-
+  const isEmailModalOpen = (e)=>{
+    setEmailModal(e);    
+  }  
+  const isPasswordModalOpen = (e)=>{
+    setPasswordModal(e);
+  }
   const onSubmit = async e => {
     e.preventDefault()
   }
 
   const handleSignup = async e => {
     await axios
-      .post('https://www.cardbookserver.tk:4000/users/login', {
+      .post('https://api.cardbook.tk:4000/users/login', {
         email,
         password,
       })
@@ -52,6 +61,9 @@ const Login = ({ onLoggedIn }) => {
 
   return (
     <>
+      
+      {<EmailModal isOpen={emailModalIsOpen} isEmailModalOpen={isEmailModalOpen}/>}
+      {<PasswordModal isOpen={passwordModalIsOpen} isPasswordModalOpen={isPasswordModalOpen}/>}
       <form onSubmit={onSubmit}>
         <div className="container">
           <div className="container_left">
@@ -86,7 +98,7 @@ const Login = ({ onLoggedIn }) => {
               </button>
             </Link>
             <div className="login_error_massage">{error}</div>
-            <span className="find-ID-find-PW">find Email / find Passward</span>
+            <span className="find-ID-find-PW"><span onClick={()=>isEmailModalOpen(true)}>Find Email</span> / <span onClick={()=>isPasswordModalOpen(true)}>Find Passward</span></span>
 
             <Link to="/signup">
               <button className="main_signUpbtn">Sign Up</button>
@@ -95,7 +107,7 @@ const Login = ({ onLoggedIn }) => {
             <a href="https://github.com/login/oauth/authorize?client_id=f5b68abafe3a2adeabc7"><img className="main_icon" src={Icon} alt="base" /></a>
           </div>
         </div>
-      </form>
+      </form>    
     </>
   )
 }

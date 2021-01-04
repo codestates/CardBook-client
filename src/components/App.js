@@ -13,24 +13,31 @@ const App = () => {
   
 
   useEffect(()=>{
-    const getAccessToken = async (authorizationCode)=>{      
-      await axios.post("https://www.cardbookserver.tk:4000/users/gitlogin",{
-        authorizationCode:authorizationCode
-      })
-      .then((token)=>{
-        onLoggedIn()
-        setAccessToken(token.data.accessToken)        
-      })
-      .catch(()=>console.log("실패"));
-    }
-    const didmount = ()=>{      
-      const url = new URL(window.location.href)
-      const authorizationCode = url.searchParams.get('code');      
-      if(authorizationCode){        
-        getAccessToken(authorizationCode) 
+    const userInfo = sessionStorage.getItem('user');
+
+    if(!userInfo){
+      const getAccessToken = async (authorizationCode)=>{
+        await axios.post("https://api.cardbook.tk:4000/users/gitlogin",{
+          authorizationCode:authorizationCode
+        })
+        .then((token)=>{
+          onLoggedIn()
+          setAccessToken(token.data.accessToken)
+        })
+        .catch(()=>console.log("실패"));
       }
+      const didmount = ()=>{
+        const url = new URL(window.location.href)
+        const authorizationCode = url.searchParams.get('code');      
+        if(authorizationCode){
+          getAccessToken(authorizationCode)
+        }
+      }
+      didmount();
+    }else if(!setInit){
+      onLoggedIn();
     }
-    didmount();
+  
   },[])
   return (
     <>

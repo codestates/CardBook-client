@@ -1,0 +1,31 @@
+.modal-frame{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 30%;
+    height: 25%;
+    background-color: white;
+}
+.input-email{
+    position: relative;
+    width: 50%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.input-phone{
+    position: relative;
+    width: 50%;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.findmodal{
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.75);    
+}
