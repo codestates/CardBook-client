@@ -20,7 +20,7 @@ const Modal = ({ onModalOpen }) => {
 
   const onPostCard = () => {
     axios
-      .post("https://www.cardbookserver.tk:4000/contents/write", {
+      .post("https://api.cardbook.tk:4000/contents/write", {
         subclassId: 1,
         content: content,
         title: title,

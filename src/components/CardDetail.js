@@ -5,7 +5,7 @@ import axios from "axios";
 const CardDetail = ({ location }) => {
   const onDeleteCard = async () => {
     try {
-      await axios.post("https://www.cardbookserver.tk:4000/contents/delete", {
+      await axios.post("https://api.cardbook.tk:4000/contents/delete", {
         id: location.state.content.id,
       });
     } catch (err) {
