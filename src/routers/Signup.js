@@ -49,7 +49,7 @@ const Signup = () => {
   const postprofileimg = e => {
     const formData = new FormData();
     formData.append('singup_img_upload', e.target.files[0]);
-    axios.post('/users/upload',formData,{
+    axios.post('https://api.cardbook.tk:4000/users/upload',formData,{
       header: { 'content-type': `multipart/form-data; boundary=${formData._boundary}`},
     }).then((res) => {
       setprofileimgsrc(res.data.location);
