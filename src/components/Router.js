@@ -1,19 +1,23 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navigation from "components/Navigation";
-import Modal from "components/Modal";
-import Public from "routers/Public";
-import My from "routers/My";
-import Profile from "routers/Profile";
-import CardDetail from "components/CardDetail";
-import MyCardDetail from "components/MyCardDetail";
-import Footer from "./Footer";
+import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Navigation from 'components/Navigation'
+import Modal from 'components/Modal'
+import Public from 'routers/Public'
+import My from 'routers/My'
+import Profile from 'routers/Profile'
+import CardDetail from 'components/CardDetail'
+import MyCardDetail from 'components/MyCardDetail'
+import Footer from './Footer'
 
 const AppRouter = ({ isLoggedIn }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const onModalOpen = () => {
-    setIsModalOpen((prev) => !prev);
-  };
+    setIsModalOpen(prev => !prev)
+  }
+  const [isProfile, setIsProfile] = useState(false)
+  const onProfile = () => {
+    setIsProfile(prev => !prev)
+  }
 
   return (
     <Router>
@@ -21,7 +25,10 @@ const AppRouter = ({ isLoggedIn }) => {
         {isLoggedIn ? (
           <>
             {isModalOpen ? <Modal onModalOpen={onModalOpen} /> : null}
-            <Navigation onModalOpen={onModalOpen} />
+            {isProfile ? null : (
+              <Navigation onModalOpen={onModalOpen} onProfile={onProfile} />
+            )}
+
             <Route exact path="/public" component={Public} />
             <Route path="/public/:id" component={CardDetail} />
             <Route exact path="/my" component={My} />
@@ -36,7 +43,7 @@ const AppRouter = ({ isLoggedIn }) => {
         )}
       </Switch>
     </Router>
-  );
+  )
   //   return (
   //     <Router>
   //       {isLoggedIn && <Navigation userObj={userObj} />}
@@ -69,6 +76,6 @@ const AppRouter = ({ isLoggedIn }) => {
   //       </Switch>
   //     </Router>
   //   );
-};
+}
 
-export default AppRouter;
+export default AppRouter
