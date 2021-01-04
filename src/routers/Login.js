@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Video from 'basicObj/Mainloop.mp4'
 import Icon from 'basicObj/social_login.png'
-// import GitLogin from 'routers/GitLogin'
 import { Link, withRouter, useHistory } from 'react-router-dom'
 import 'styles.css'
 import axios from 'axios'
@@ -49,7 +48,7 @@ const Login = ({ onLoggedIn }) => {
 
   const handleGeust = () => {
     onLoggedIn()
-  }
+  } 
 
   return (
     <>
@@ -76,23 +75,24 @@ const Login = ({ onLoggedIn }) => {
               placeholder="Password"
               onChange={onChange}
             ></input>
-            {/* <Link to="/public"> */}
-            <button className="main_loginbtn" onClick={handleSignup}>
-              Login
-            </button>
-            {/* </Link> */}
-            {/* <Link to="/public"> */}
-            <button className="main_Gestloginbtn" onClick={handleGeust}>
-              Guest Login
-            </button>
-            {/* </Link> */}
+            <Link to="/public">
+              <button className="main_loginbtn" onClick={handleSignup}>
+                Login
+              </button>
+            </Link>
+            <Link to="/public">
+              <button className="main_Gestloginbtn" onClick={handleGeust}>
+                Guest Login
+              </button>
+            </Link>
             <div className="login_error_massage">{error}</div>
             <span className="find-ID-find-PW">find Email / find Passward</span>
+
             <Link to="/signup">
               <button className="main_signUpbtn">Sign Up</button>
             </Link>
-
-            <img className="main_icon" src={Icon} alt="base" />
+            
+            <a href="https://github.com/login/oauth/authorize?client_id=f5b68abafe3a2adeabc7"><img className="main_icon" src={Icon} alt="base" /></a>
           </div>
         </div>
       </form>

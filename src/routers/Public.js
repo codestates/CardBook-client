@@ -3,16 +3,19 @@ import 'routers/Public.css'
 import PublicCard from 'components/PublicCard'
 import axios from 'axios'
 
-const Public = () => {
-  const [movies, setMovies] = useState([])
-  const [contents, setContents] = useState([])
-
+const Public = () => {  
+  const [contents, setContents] = useState([])  
+  
   useEffect(() => {
-    const getContentsData = async () => {
-      let data = await axios.get(
+    const getContentsData = async () => {      
+      let data=[];
+      
+      data = await axios.get(
         'https://www.cardbookserver.tk:4000/contents/viewpubliclists'
       )
-      setContents(data.data)
+      let movies = await axios.get("https://yts.mx/api/v2/list_movies.json")
+      let datas = [...movies.data.data.movies, ...data.data];
+      setContents(datas);
     }
     getContentsData()
   }, [])
