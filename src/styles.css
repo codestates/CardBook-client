@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 h1 {
@@ -9,22 +9,22 @@ h1 {
 }
 
 #root {
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .container {
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.container_center {
+/* .container_center {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
+} */
 
 .container_left {
   display: flex;
@@ -44,14 +44,14 @@ h1 {
   justify-content: space-between;
   align-items: center;
 }
-.text_Box {
+/* .text_Box {
   width: 350px;
   height: 45px;
   margin: 20px;
   border-radius: 10px;
   border: solid 1px #bebebe;
   background-color: #f5f5f5;
-}
+} */
 .main_ID {
   width: 300px;
   height: 65px;
@@ -83,7 +83,7 @@ h1 {
   border: solid 1px #bebebe;
   background-color: #f5f5f5;
 }
-.main_signUpbtn {
+/* .main_signUpbtn {
   width: 193px;
   height: 45px;
   margin-top: 20px;
@@ -91,7 +91,7 @@ h1 {
   border: solid 1px #bebebe;
   background-color: #f5f5f5;
   position: relative;
-}
+} */
 
 .find-ID-find-PW {
   position: relative;
@@ -118,7 +118,7 @@ h1 {
   margin-top: 50px;
 }
 
-input[type='text'],
+/* input[type='text'],
 input[type='phone'],
 input[type='email'],
 input[type='password'] {
@@ -129,4 +129,4 @@ input[type='password'] {
 }
 .signup_Logo:hover {
   cursor: pointer;
-}
+} */
