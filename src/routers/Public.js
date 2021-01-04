@@ -22,13 +22,8 @@ const Public = () => {
 
   return (
     <>
-<<<<<<< HEAD
-      <div className="cardContainor">        
-        {contents.map((content, index) => {          
-=======
       <div className="cardContainor">
         {contents.reverse().map((content, index) => {
->>>>>>> e0825d6ae1c2baaa8e375fa1d17e36373d3bda2d
           if (index < 200) {
             return <PublicCard key={content.id} content={content} />
           } else {
