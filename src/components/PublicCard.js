@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const PublicCard = ({ content }) => {
+  console.log(content);
   return (
     <Link
       className="card"

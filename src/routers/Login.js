@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Video from 'basicObj/Mainloop.mp4'
 import Icon from 'basicObj/social_login.png'
+// import GitLogin from 'routers/GitLogin'
 import { Link, withRouter, useHistory } from 'react-router-dom'
 import 'styles.css'
 import axios from 'axios'
@@ -65,32 +66,31 @@ const Login = ({ onLoggedIn }) => {
           <div className="container_right">
             <h1 className="main_title">CardBook</h1>
             <input
-              className="main_ID"
+              className="text_Box"
               name="email"
               type="email"
               placeholder="Email"
               onChange={onChange}
             ></input>
             <input
-              className="main_PS"
+              className="text_Box"
               name="password"
               type="password"
               placeholder="Password"
               onChange={onChange}
             ></input>
-            <Link to="/public">
-              <button className="main_loginbtn" onClick={handleSignup}>
-                Login
-              </button>
-            </Link>
-            <Link to="/public">
-              <button className="main_Gestloginbtn" onClick={handleGeust}>
-                Guest Login
-              </button>
-            </Link>
+            {/* <Link to="/public"> */}
+            <button className="main_loginbtn" onClick={handleSignup}>
+              Login
+            </button>
+            {/* </Link> */}
+            {/* <Link to="/public"> */}
+            <button className="main_Gestloginbtn" onClick={handleGeust}>
+              Guest Login
+            </button>
+            {/* </Link> */}
             <div className="login_error_massage">{error}</div>
             <span className="find-ID-find-PW">find Email / find Passward</span>
-
             <Link to="/signup">
               <button className="main_signUpbtn">Sign Up</button>
             </Link>
