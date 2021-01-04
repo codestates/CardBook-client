@@ -49,6 +49,9 @@ const Login = ({ onLoggedIn }) => {
   const handleGeust = () => {
     onLoggedIn()
   }
+  const socialLoginHandler = () =>{
+    window.location.assign('https://github.com/login/oauth/authorize?client_id=2a260a1d9051b097dc5b')
+  }
 
   return (
     <>
@@ -92,7 +95,7 @@ const Login = ({ onLoggedIn }) => {
               <button className="main_signUpbtn">Sign Up</button>
             </Link>
 
-            <img className="main_icon" src={Icon} alt="base" />
+            <img className="main_icon" src={Icon} alt="base" onClick={socialLoginHandler}/>
           </div>
         </div>
       </form>
