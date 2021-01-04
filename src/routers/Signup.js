@@ -72,8 +72,10 @@ const Signup = () => {
       .catch(err => {
         if (err.response.status === 422) {
           //setError('모든 항목은 필수입니다.')
+          alert('모든 항목은 필수입니다.')
         } else if (err.response.status === 409) {
           //setError('중복된 이메일입니다.')
+          alert('중복된 이메일입니다.')
         }
       })
   }
