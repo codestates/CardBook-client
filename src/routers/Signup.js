@@ -4,7 +4,7 @@ import BaseImage from 'basicObj/basic_profile_image.png'
 import axios from 'axios'
 import 'routers/Signup.css'
 
-// axios.defaults.withCredentials = true;
+//  axios.defaults.withCredentials = true;
 
 const Signup = () => {
   const [email, setEmail] = useState('')
@@ -29,8 +29,6 @@ const Signup = () => {
   const onSubmit = e => {
     e.preventDefault()
   }
-  
-  const [indicator,setindicator] = useState('')
 
   const onChange = e => {
     const {
@@ -42,12 +40,6 @@ const Signup = () => {
       setPhone(value)
     } else if (name === 'password') {
       setPassword(value)
-      if(password === ''){
-        console.log('빈칸임')
-      }
-      else{
-        console.log('빈칸아님')
-      }
     }
       else if (name === 'username') {
       setUsername(value)
@@ -57,7 +49,7 @@ const Signup = () => {
   const postprofileimg = e => {
     const formData = new FormData();
     formData.append('singup_img_upload', e.target.files[0]);
-    axios.post('https://www.cardbookserver.tk:4000/users/upload',formData,{
+    axios.post('/users/upload',formData,{
       header: { 'content-type': `multipart/form-data; boundary=${formData._boundary}`},
     }).then((res) => {
       setprofileimgsrc(res.data.location);
@@ -66,7 +58,7 @@ const Signup = () => {
 
   const handleSignup = e => {
     axios
-      .post('https://www.cardbookserver.tk:4000/users/signup', {
+      .post('/users/signup', {
         email,
         password,
         phone,
@@ -143,7 +135,7 @@ const Signup = () => {
   
 
   return (
-    <div className="container">
+    <div className="containerr">
       <div className="container_narrow">
         <form onSubmit={onSubmit}>
           <div className = "signup_area_logo">
@@ -183,14 +175,14 @@ const Signup = () => {
                 placeholder="비밀번호"
                 onChange={onChange}
               ></input>
-              <span className="signup_password_toggle">보이기</span>
+              {/* <span className="signup_password_toggle">보이기</span> */}
               </div>
-              <div className ="indicator" style={{indicator}}>
+              {/* <div className ="indicator" style={{indicator}}>
                 <span className ="waek"></span>
                 <span className ="medium"></span>
                 <span className ="strong"></span>
               </div>
-              <div className="signup_password_text">비밀번호가 너무 짧습니다.</div>
+              <div className="signup_password_text">비밀번호가 너무 짧습니다.</div> */}
             </div>
             <div className="signup_formlist_item_verifyPassword">
               <div className="signup_formlist_item_title">
