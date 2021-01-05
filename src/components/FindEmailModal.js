@@ -9,6 +9,7 @@ const FindEmailModal = ({isEmailModalOpen,isOpen})=>{
     const closeModal = ()=>{
         isEmailModalOpen(false);
         setEmail('');
+        setPhone('');        
     }
     const setPhoneNum = (event)=>{
         setPhone(event.target.value)
