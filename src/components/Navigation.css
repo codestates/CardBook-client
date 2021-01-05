@@ -70,8 +70,15 @@
 }
 
 #writeBtn {
-  margin-left: 24px;
+  /* margin-left: 300px; */
+  /* margin-left: 24px; */
+  /* align-self: flex-end; */
+  position: absolute;
+  right: 128px;
+  float: right;
   margin-top: 24px;
+  background-color: white;
+  border: none;
 }
 
 @media (max-width: 768px) {
