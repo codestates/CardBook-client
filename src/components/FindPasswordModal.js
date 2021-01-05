@@ -10,6 +10,8 @@ const FindPasswordModal = ({isPasswordModalOpen,isOpen})=>{
     const closeModal = ()=>{
         isPasswordModalOpen(false);
         setPassword('');
+        setPhone('');
+        setEmail('');
     }
     const setPhoneNum = (event)=>{
         setPhone(event.target.value);
