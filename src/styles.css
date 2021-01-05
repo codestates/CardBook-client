@@ -10,6 +10,9 @@ h1 {
   padding: 0;
   border: 0;
 }
+.hidden {
+  visibility: hidden;
+}
 
 .container {
   height: 100vh;
@@ -101,7 +104,7 @@ h1 {
   font-size: 0.9rem;
 }
 .main_icon {
-  padding-top: 70px;
+  margin-top: 70px;
 }
 
 /* input[type='text'],
