@@ -1,20 +1,30 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import 'routers/Profile.css'
-import axios from 'axios'
-import userImg from 'basicObj/basic_profile_image.png'
-import contentImg from 'basicObj/contentImg.png'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import "routers/Profile.css";
+import axios from "axios";
+import userImg from "basicObj/basic_profile_image.png";
+import contentImg from "basicObj/contentImg.png";
+import { useProfileState, useProfileDispatch } from "context/ProfileContext";
 
-const Profile = ({ onProfile }) => {
-  const history = useHistory()
+const Profile = ({ location }) => {
+  const state = useProfileState();
+  const dispatch = useProfileDispatch();
+
+  const history = useHistory();
+
+  const onProfile = () => {
+    dispatch({ type: "CHANGE_STATE", payload: !state.status });
+    history.push("/public");
+  };
+
   const userinfo = axios.get(
-    'https://www.cardbookserver.tk:4000//users/userinfo'
-  )
-  console.log(userinfo)
+    "https://www.cardbookserver.tk:4000//users/userinfo"
+  );
+  console.log(userinfo);
   return (
     <div className="profileContainer">
       <div className="profileContainer_left">
-        <h1 className="profileTitle" onClick={() => history.push('/public')}>
+        <h1 className="profileTitle" onClick={onProfile}>
           Cardbook
         </h1>
         <div className="profileUserinfo">
@@ -38,7 +48,7 @@ const Profile = ({ onProfile }) => {
           className="profileImg"
           src={userImg}
           alt="basic"
-          style={{ height: '150px' }}
+          style={{ height: "150px" }}
         />
         <div className="profileUserinfoRight">
           <span>My List</span>
@@ -48,7 +58,7 @@ const Profile = ({ onProfile }) => {
         <img className="contentImg" src={contentImg} alt="contentImg" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

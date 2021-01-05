@@ -1,0 +1,30 @@
+.cursor {
+  width: 32px;
+  height: 32px;
+  border: 2px solid gray;
+  border-radius: 100%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: all 120ms ease;
+  transition-property: opacity, background-color, transform, mix-blend-mode;
+  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cursor--hidden {
+  opacity: 0;
+}
+
+.cursor--clicked {
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: gray;
+}
+
+*,
+html,
+body,
+a {
+  cursor: none !important;
+}

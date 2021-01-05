@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import 'routers/Public.css'
-import PublicCard from 'components/PublicCard'
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import "routers/Public.css";
+import PublicCard from "components/PublicCard";
+import axios from "axios";
 
-const Public = () => {  
-  const [contents, setContents] = useState([])  
-  
+const Public = () => {
+  const [contents, setContents] = useState([]);
+
   useEffect(() => {
-    const getContentsData = async () => {      
-      let data=[];
-      
+    const getContentsData = async () => {
+      let data = [];
+
       data = await axios.get(
-        'https://api.cardbook.tk:4000/contents/viewpubliclists'
-      )
-      let movies = await axios.get("https://yts.mx/api/v2/list_movies.json")
+        "https://api.cardbook.tk:4000/contents/viewpubliclists"
+      );
+      let movies = await axios.get("https://yts.mx/api/v2/list_movies.json");
       let datas = [...movies.data.data.movies, ...data.data];
       setContents(datas);
-    }
-    getContentsData()
-  }, [])
+    };
+    getContentsData();
+  }, []);
 
   return (
     <>
       <div className="cardContainor">
         {contents.reverse().map((content, index) => {
           if (index < 200) {
-            return <PublicCard key={content.id} content={content} />
+            return <PublicCard key={content.id} content={content} />;
           } else {
             return console.log(index);
           }
         })}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Public
+export default Public;
