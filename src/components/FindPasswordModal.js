@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import './FindModal.css'
 import axios from 'axios'
 
+
 const FindPasswordModal = ({ isPasswordModalOpen, isOpen }) => {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
@@ -62,6 +63,7 @@ const FindPasswordModal = ({ isPasswordModalOpen, isOpen }) => {
       </div>
     </Modal>
   )
+
 }
 
 export default FindPasswordModal

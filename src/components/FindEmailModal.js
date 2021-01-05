@@ -3,6 +3,7 @@ import Modal from 'react-modal'
 import './FindModal.css'
 import axios from 'axios'
 
+
 const FindEmailModal = ({ isEmailModalOpen, isOpen }) => {
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
@@ -47,6 +48,7 @@ const FindEmailModal = ({ isEmailModalOpen, isOpen }) => {
       </div>
     </Modal>
   )
+
 }
 
 export default FindEmailModal

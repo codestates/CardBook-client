@@ -49,7 +49,7 @@ const Signup = () => {
   const postprofileimg = e => {
     const formData = new FormData();
     formData.append('singup_img_upload', e.target.files[0]);
-    axios.post('/users/upload',formData,{
+    axios.post('https://api.cardbook.tk:4000/users/upload',formData,{
       header: { 'content-type': `multipart/form-data; boundary=${formData._boundary}`},
     }).then((res) => {
       setprofileimgsrc(res.data.location);
@@ -72,8 +72,10 @@ const Signup = () => {
       .catch(err => {
         if (err.response.status === 422) {
           //setError('모든 항목은 필수입니다.')
+          alert('모든 항목은 필수입니다.')
         } else if (err.response.status === 409) {
           //setError('중복된 이메일입니다.')
+          alert('중복된 이메일입니다.')
         }
       })
   }
